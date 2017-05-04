@@ -1,0 +1,26 @@
+<% include public/views/header.ejs %>
+
+<div id="loginPage">
+    <form id="">
+        <div class="row loginPage">
+            <label>Email</label>
+            <input id="email" type="email" placeholder="yourname@email.com" required>
+            <br>
+            <label>Password</label>
+            <input id="password" type="password" placeholder="password" required>
+            <br>
+            <br>
+            <button id="loginSubmit" type="button">Submit</button>
+        </div>
+    </form>
+</div>
+
+<div id="loggerPage">
+    <% include public/views/logger.ejs %>
+</div>
+
+<div id="leaderboardPage">
+    <% include public/views/leaderboard.ejs %>
+</div>
+
+<% include public/views/footer.ejs %>

@@ -1,0 +1,29 @@
+{
+  "name": "InternationalFriends",
+  "version": "2.4.7",
+  "private": false,
+  "description": "For a better world",
+  "main": "bin/server",
+  "keywords": [
+    "spa",
+    "pwa"
+  ],
+  "scripts": {
+    "start": "node bin/server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nicolassims/SmartCommute"
+  },
+  "engines": {
+    "node": ">= 7.6.0"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "fs": "latest",
+    "ejs": "latest",
+    "nedb": "latest",
+    "formidable": "latest",
+    "simple-oauth2": "latest"
+  }
+}
