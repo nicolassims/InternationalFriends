@@ -1,26 +1,33 @@
 <% include public/views/header.ejs %>
 
-<div id="loginPage">
-    <form id="">
-        <div class="row loginPage">
-            <label>Email</label>
-            <input id="email" type="email" placeholder="yourname@email.com" required>
-            <br>
-            <label>Password</label>
-            <input id="password" type="password" placeholder="password" required>
-            <br>
-            <br>
-            <button id="loginSubmit" type="button">Submit</button>
-        </div>
-    </form>
+<header>
+    <h1>I.F.</h1>
+    <h1>International Friends</h1>
+</header>
+
+<div class="container">
+    <h2>The speak-o-sphere.</h2>
+    <div class="poll">
+        <div class="bar"></div>
+        <div class="question">Is Yuuki Mishima a <span>zero</span>?</div>
+        <span class="percent"></span>
+    </div>
+    <div class="buttons">
+        <div class="btn" vote="1">Yes</div>
+        <div class="btn" vote="0">No</div>
+    </div>
+    <hr style="border: 2px solid red;">
+    <h2>add comment</h2>
+    <textarea class="text" maxlength="200"></textarea>
+    <h2 class="comment-add">Add</h2>
+    <div class="reload">reload comments</div>
+    <div class="comments"> </div>
+
+    <!--<a href="https://phansite.net/forum/" class="notice">
+        Visit <span>Phantom Forum <br>(beta) - it's back!</span>
+    </a>-->
 </div>
 
-<div id="loggerPage">
-    <% include public/views/logger.ejs %>
-</div>
 
-<div id="leaderboardPage">
-    <% include public/views/leaderboard.ejs %>
-</div>
-
-<% include public/views/footer.ejs %>
+</body>
+</html>
