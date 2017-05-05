@@ -35,18 +35,13 @@ class app {
             if (request.method === 'POST') {
                 if (request.headers['x-requested-with'] === 'XMLHttpRequest0') {
                     request.on('data', (data) => {
-                        this.user = DATA_HANDLER.handleUserData(data.toString('utf8'));
-                        if (this.user == true) {
-                            response.writeHead(200, {'content-type': 'application/json'});
-                            response.end('true');
-                        } else {
-                            response.writeHead(200, {'content-type': 'text/plain'});
-                            response.end('false');
-                        }
+                        this.user = DATA_HANDLER.refreshComments(data.toString('utf8'));
+                        response.writeHead(200, {'content-type': 'application/json'});
+                        response.end(JSON.stringify(this.user));
                     });
                 } else if (request.headers['x-requested-with'] === 'XMLHttpRequest1') {
                     request.on('data', (data) => {
-                        this.user = DATA_HANDLER.handleUserTrips(data.toString('utf8'));
+                        this.user = DATA_HANDLER.addComments(data.toString('utf8'));
                         response.writeHead(200, {'content-type': 'application/json'});
                         response.end(JSON.stringify(this.user));
                     });

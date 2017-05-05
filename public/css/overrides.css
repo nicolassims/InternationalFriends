@@ -1,10 +1,10 @@
 @import url(normalize.css);
 @import url(skeleton.css);
 body {
-  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white; }
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+  text-align: center; }
 
 header {
-  text-align: center;
   border-bottom: ridge black 3px;
   margin-bottom: 2%; }
 
@@ -24,5 +24,11 @@ header {
 
 .question {
   margin: 0 0 2% 4%; }
+
+#addComment {
+  float: left; }
+
+#hearComments {
+  float: right; }
 
 /*# sourceMappingURL=overrides.css.map */
