@@ -15,6 +15,7 @@ class main {
         main.handleSignup();
         main.handleLogin();
         main.preventEnterKeys();
+        main.handleAboutMe();
     }
 
     static hidePages() {
@@ -82,6 +83,10 @@ class main {
         });
     }
 
+    static handleAboutMe() {
+
+    }
+
     static switchPages() {
         document.getElementById('registerButton').addEventListener('click', () => {
             document.getElementById('signupPage').style.display = "block";
@@ -130,7 +135,7 @@ class main {
             if (document.getElementById('commentText').value == '') {
                 alert('Cat got your tongue?');
             } else {
-                let sendaway = '<div>' + document.getElementById('commentText').value.replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/'/g, "&#039;").replace(/\\/g, "&#92;") + '</div><br>';
+                let sendaway = '<div style="text-align: center;border-bottom: 1px black solid">' + document.getElementById('commentText').value.replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/'/g, "&#039;").replace(/\\/g, "&#92;") + '</div><br>';
                 document.getElementById('commentText').value = '';
                 main.performAjax('XMLHttpRequest1', JSON.stringify(sendaway), (response) => {
                     response = response.replace(/"]/g, '').replace(/\["/g, '').replace(/\\"/g, '').replace(/","/g, '');

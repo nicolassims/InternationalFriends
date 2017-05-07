@@ -10,11 +10,14 @@ h1 {
   top: 1%; }
 
 header {
+  position: absolute;
   border-bottom: ridge black 3px;
   padding-bottom: 10%;
-  margin-bottom: 2%; }
+  margin-bottom: 2%;
+  width: 100%; }
 
 .commentButtons {
+  position: absolute;
   border-color: transparent;
   font-size: 3.0rem;
   line-height: 1.3;
@@ -37,6 +40,7 @@ header {
     display: block; }
 
 .headerButton {
+  position: absolute;
   float: right;
   color: white; }
 
@@ -49,10 +53,16 @@ header {
   background-clip: text; }
 
 .questionTitle {
+  position: absolute;
   margin: 0 0 2% 0;
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  top: 25%;
+  left: 40%; }
 
 .question {
+  position: absolute;
+  top: 33%;
+  left: 34%;
   margin: 0 0 2% 4%; }
 
 .signupElement:focus {
@@ -69,15 +79,26 @@ header {
   font-size: xx-large; }
 
 #addComment {
-  float: left; }
+  position: absolute;
+  float: left;
+  left: 15%;
+  top: 41%; }
 
 #blackbolt {
   position: absolute;
   right: 0;
-  top: -10%; }
+  top: -50%; }
+
+#comments {
+  position: absolute;
+  top: 55%;
+  left: 17%; }
 
 #commentText {
-  resize: none; }
+  position: absolute;
+  resize: none;
+  top: 40%;
+  left: 42%; }
 
 #confirmPassword:focus {
   border-color: blue yellow green red; }
@@ -87,20 +108,28 @@ header {
 
 #fullName {
   position: absolute;
-  left: 40%;
-  top: 11%; }
+  left: 38%;
+  top: 50%; }
 
 #fullName:hover {
   font-size: 350%;
   left: 35%; }
 
 #hearComments {
-  float: right; }
+  float: right;
+  position: absolute;
+  right: 20%;
+  top: 41%; }
 
 #loginButton {
   position: absolute;
   right: 1%;
-  top: 3%; }
+  top: 11%; }
+
+#loginPage {
+  position: absolute;
+  left: 41%;
+  top: 33%; }
 
 #loginSubmit:hover {
   border-color: blue yellow green red;
@@ -115,18 +144,23 @@ header {
 
 #registerButton {
   position: absolute;
-  right: 11%;
-  top: 7.25%; }
+  right: 10.5%;
+  top: 33%; }
 
 #shortName {
-  left: 47.5%; }
+  left: 47%; }
 
 #shortName:hover {
   font-size: 400%;
-  left: 47%; }
+  left: 46%; }
 
 #signupEmail:focus {
   border-color: blue yellow green red; }
+
+#signupPage {
+  position: absolute;
+  left: 33%;
+  top: 33%; }
 
 #signupPassword:focus {
   border-color: blue yellow green red; }
@@ -142,15 +176,20 @@ header {
 #speechbubble {
   position: absolute;
   left: 1%;
-  top: 125px; }
+  top: -55%; }
 
 #thoughtbubble {
   position: absolute;
-  left: 96%;
-  top: 125px; }
+  right: 0;
+  top: -55%; }
 
 #username:focus {
   border-color: blue yellow green red; }
+
+#userPage {
+  position: absolute;
+  left: 33%;
+  top: 25%; }
 
 #userpageTitle {
   font-size: x-large; }
