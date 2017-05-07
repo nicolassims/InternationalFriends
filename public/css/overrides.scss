@@ -71,6 +71,15 @@ header {
   border-color: blue yellow green red;
 }
 
+#activeuser {
+  position: absolute;
+  right: 3%;
+  top: 1%;
+  z-index: 1000;
+  color: black;
+  font-size: x-large;
+}
+
 #addComment {
   float: left;
 }

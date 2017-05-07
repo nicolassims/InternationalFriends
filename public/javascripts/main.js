@@ -6,8 +6,6 @@
 
 'use strict';
 
-let activeuser;
-
 class main {
     constructor() {
         main.hidePages();
@@ -21,6 +19,8 @@ class main {
     static hidePages() {
         document.getElementById('signupPage').style.display = "none";
         document.getElementById('loginPage').style.display = "none";
+        document.getElementById('activeuser').style.display = "none";
+        document.getElementById('activeemail').style.display = "none";
     }
 
     static handleSignup() {
@@ -39,11 +39,15 @@ class main {
                         document.getElementById('signupPage').style.display = "none";
                         document.getElementById('mainPage').style.display = "block";
                         alert('Welcome to I.F., ' + response[2] + '!');
-                        activeuser = response[0] + ',' + response[2];
+                        document.getElementById('activeuser').innerHTML = response[2];
+                        document.getElementById('activeemail').innerHTML = response[0];
                         document.getElementById('signupEmail').value = '';
                         document.getElementById('signupPassword').value = '';
                         document.getElementById('confirmPassword').value = '';
                         document.getElementById('username').value = '';
+                        document.getElementById('activeuser').style.display = 'block';
+                        document.getElementById('loginButton').style.display = 'none';
+                        document.getElementById('registerButton').style.display = 'none';
                     }
                 });
             }
@@ -63,9 +67,13 @@ class main {
                         document.getElementById('loginPage').style.display = "none";
                         document.getElementById('mainPage').style.display = "block";
                         alert('Welcome back to I.F., ' + response[2] + '!');
-                        activeuser = response[0] + ',' + response[2];
+                        document.getElementById('activeuser').innerHTML = response[2];
+                        document.getElementById('activeemail').innerHTML = response[0];
                         document.getElementById('email').value = '';
                         document.getElementById('password').value = '';
+                        document.getElementById('activeuser').style.display = 'block';
+                        document.getElementById('loginButton').style.display = 'none';
+                        document.getElementById('registerButton').style.display = 'none';
                     }
                 });
             }
