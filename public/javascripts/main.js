@@ -15,10 +15,12 @@ class main {
         main.addComment();
         main.switchPages();
         main.handleSignup();
+        main.handleLogin();
     }
 
     static hidePages() {
-        document.getElementById('signupPage').style.display = "none"
+        document.getElementById('signupPage').style.display = "none";
+        document.getElementById('loginPage').style.display = "none";
     }
 
     static handleSignup() {
@@ -29,13 +31,15 @@ class main {
                 alert(`Your passwords don't match. Want to fix that?`)
             } else {
                 main.performAjax('XMLHttpRequest2', JSON.stringify([document.getElementById('signupEmail').value, document.getElementById('signupPassword').value, document.getElementById('username').value]), (response) => {
+                    console.log(response);
                     if (response == '1') {
                         alert('There\'s already a user with that email address.')
                     } else {
+                        response = JSON.parse(response);
                         document.getElementById('signupPage').style.display = "none";
                         document.getElementById('mainPage').style.display = "block";
-                        alert('Welcome to I.F., ' + document.getElementById('username').value + '!');
-                        activeuser = document.getElementById('signupEmail').value + ',' + document.getElementById('username').value;
+                        alert('Welcome to I.F., ' + response[2] + '!');
+                        activeuser = response[0] + ',' + response[2];
                         document.getElementById('signupEmail').value = '';
                         document.getElementById('signupPassword').value = '';
                         document.getElementById('confirmPassword').value = '';
@@ -46,10 +50,38 @@ class main {
         });
     }
 
+    static handleLogin() {
+        document.getElementById('loginSubmit').addEventListener('click', () => {
+            if (document.getElementById('password').value === '' || document.getElementById('email').value === '' || ! /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(document.getElementById('email').value)) {
+                alert(`Mm, that information doesn't seem right. You need a proper password and email address, okay?`)
+            } else {
+                main.performAjax('XMLHttpRequest3', JSON.stringify([document.getElementById('email').value, document.getElementById('password').value]), (response) => {
+                    if (response == '1') {
+                        alert('You don\'t appear to be registered with our system. Or maybe your password\'s wrong.')
+                    } else {
+                        response = JSON.parse(response);
+                        document.getElementById('loginPage').style.display = "none";
+                        document.getElementById('mainPage').style.display = "block";
+                        alert('Welcome back to I.F., ' + response[2] + '!');
+                        activeuser = response[0] + ',' + response[2];
+                        document.getElementById('email').value = '';
+                        document.getElementById('password').value = '';
+                    }
+                });
+            }
+        });
+    }
+
     static switchPages() {
         document.getElementById('registerButton').addEventListener('click', () => {
             document.getElementById('signupPage').style.display = "block";
-            document.getElementById('mainPage').style.display = "none"
+            document.getElementById('mainPage').style.display = "none";
+            document.getElementById('loginPage').style.display = "none";
+        });
+        document.getElementById('loginButton').addEventListener('click', () => {
+            document.getElementById('loginPage').style.display = "block";
+            document.getElementById('mainPage').style.display = "none";
+            document.getElementById('signupPage').style.display = "none";
         });
     }
 

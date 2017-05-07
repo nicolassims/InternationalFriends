@@ -28,7 +28,18 @@ class DataHandler {
             }
         }
         users[users.length] = data;
-        console.log(users);
+        return users[users.length - 1];
+    }
+
+    static handleUserLogin(data) {
+        data = JSON.parse(data);
+        data = data.toString().split(/,/);
+        for (let i = 0; i < users.length; i++) {
+            if (data[0] == users[i][0] && data[1] == users[i][1]) {
+                return users[i];
+            }
+        }
+        return 1;
     }
 }
 

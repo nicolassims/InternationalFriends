@@ -85,6 +85,10 @@ header {
   border-color: blue yellow green red;
 }
 
+#email:focus {
+  border-color: blue yellow green red;
+}
+
 #fullName {
   position: absolute;
   left: 40%;
@@ -99,6 +103,10 @@ header {
   position: absolute;
   right: 1%;
   top: 3%
+}
+
+#password:focus {
+  border-color: blue yellow green red;
 }
 
 #registerButton {
