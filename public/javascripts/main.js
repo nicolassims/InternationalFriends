@@ -22,6 +22,7 @@ class main {
         document.getElementById('loginPage').style.display = "none";
         document.getElementById('activeuser').style.display = "none";
         document.getElementById('activeemail').style.display = "none";
+        document.getElementById('userPage').style.display = "none";
     }
 
     static handleSignup() {
@@ -90,6 +91,23 @@ class main {
         document.getElementById('loginButton').addEventListener('click', () => {
             document.getElementById('loginPage').style.display = "block";
             document.getElementById('mainPage').style.display = "none";
+            document.getElementById('signupPage').style.display = "none";
+        });
+        document.getElementById('activeuser').addEventListener('click', () => {
+            document.getElementById('userPage').style.display = "block";
+            document.getElementById('mainPage').style.display = "none";
+            document.getElementById('userpageTitle').innerHTML = 'So, ' + document.getElementById('activeuser').innerHTML + ', what\'s your story?';
+        });
+        document.getElementById('shortName').addEventListener('click', () => {
+            document.getElementById('mainPage').style.display = "block";
+            document.getElementById('loginPage').style.display = "none";
+            document.getElementById('userPage').style.display = "none";
+            document.getElementById('signupPage').style.display = "none";
+        });
+        document.getElementById('fullName').addEventListener('click', () => {
+            document.getElementById('mainPage').style.display = "block";
+            document.getElementById('loginPage').style.display = "none";
+            document.getElementById('userPage').style.display = "none";
             document.getElementById('signupPage').style.display = "none";
         });
     }

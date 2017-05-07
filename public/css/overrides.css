@@ -62,9 +62,11 @@ header {
   position: absolute;
   right: 3%;
   top: 1%;
-  z-index: 1000;
-  color: black;
+  z-index: 1;
   font-size: x-large; }
+
+#activeuser:hover {
+  font-size: xx-large; }
 
 #addComment {
   float: left; }
@@ -88,6 +90,10 @@ header {
   left: 40%;
   top: 11%; }
 
+#fullName:hover {
+  font-size: 350%;
+  left: 35%; }
+
 #hearComments {
   float: right; }
 
@@ -96,6 +102,14 @@ header {
   right: 1%;
   top: 3%; }
 
+#loginSubmit:hover {
+  border-color: blue yellow green red;
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2), color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22));
+  background-image: gradient(linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2), color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22));
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text; }
+
 #password:focus {
   border-color: blue yellow green red; }
 
@@ -103,6 +117,13 @@ header {
   position: absolute;
   right: 11%;
   top: 7.25%; }
+
+#shortName {
+  left: 47.5%; }
+
+#shortName:hover {
+  font-size: 400%;
+  left: 47%; }
 
 #signupEmail:focus {
   border-color: blue yellow green red; }
@@ -130,5 +151,8 @@ header {
 
 #username:focus {
   border-color: blue yellow green red; }
+
+#userpageTitle {
+  font-size: x-large; }
 
 /*# sourceMappingURL=overrides.css.map */
