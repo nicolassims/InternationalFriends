@@ -16,6 +16,9 @@ class DataHandler {
         } else {
             comments.unshift(data);
         }
+        if (comments.length >= 100) {
+            comments[100] = null;
+        }
         return comments;
     }
 

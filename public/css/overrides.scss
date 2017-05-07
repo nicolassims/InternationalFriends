@@ -90,6 +90,10 @@ header {
   top: -10%;
 }
 
+#commentText {
+  resize: none;
+}
+
 #confirmPassword:focus {
   border-color: blue yellow green red;
 }
@@ -144,13 +148,13 @@ header {
 #speechbubble {
   position: absolute;
   left: 1%;
-  top: 53%;
+  top: 125px;
 }
 
 #thoughtbubble {
   position: absolute;
   left: 96%;
-  top: 53%;
+  top: 125px;
 }
 
 #username:focus {

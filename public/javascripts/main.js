@@ -14,6 +14,7 @@ class main {
         main.switchPages();
         main.handleSignup();
         main.handleLogin();
+        main.preventEnterKeys();
     }
 
     static hidePages() {
@@ -117,6 +118,14 @@ class main {
                     response = response.replace(/"]/g, '').replace(/\["/g, '').replace(/\\"/g, '').replace(/","/g, '');
                     document.getElementById('comments').innerHTML = response;
                 });
+            }
+        });
+    }
+
+    static preventEnterKeys() {
+        document.getElementById('commentText').addEventListener('keypress', (evt) => {
+            if (evt.which === 13) {
+                evt.preventDefault();
             }
         });
     }
