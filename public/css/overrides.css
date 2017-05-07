@@ -90,9 +90,7 @@ header {
   top: -50%; }
 
 #comments {
-  position: absolute;
-  top: 55%;
-  left: 17%; }
+  padding-top: 25%; }
 
 #commentText {
   position: absolute;
@@ -115,11 +113,26 @@ header {
   font-size: 350%;
   left: 35%; }
 
+#goal:focus {
+  border-color: blue yellow green red; }
+
 #hearComments {
   float: right;
   position: absolute;
   right: 20%;
   top: 41%; }
+
+#goal:focus {
+  border-color: blue yellow green red; }
+
+#hobby:focus {
+  border-color: blue yellow green red; }
+
+#identity:focus {
+  border-color: blue yellow green red; }
+
+#job:focus {
+  border-color: blue yellow green red; }
 
 #loginButton {
   position: absolute;
@@ -178,6 +191,14 @@ header {
   left: 1%;
   top: -55%; }
 
+#talkbubble {
+  position: absolute;
+  left: 1%;
+  top: 7%; }
+
+#talkbubble:hover {
+  filter: invert(100%); }
+
 #thoughtbubble {
   position: absolute;
   right: 0;
@@ -190,6 +211,14 @@ header {
   position: absolute;
   left: 33%;
   top: 25%; }
+
+#userpageSubmit:hover {
+  border-color: blue yellow green red;
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2), color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22));
+  background-image: gradient(linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2), color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22));
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text; }
 
 #userpageTitle {
   font-size: x-large; }

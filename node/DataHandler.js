@@ -44,6 +44,29 @@ class DataHandler {
         }
         return 1;
     }
+
+    static handleUserIdentity(data) {
+        data = JSON.parse(data);
+        data = data.toString().split(/,/);
+        console.log(data);
+        for (let i = 0; i < users.length; i++) {
+            if (data[0] == users[i][0]) {
+                if (data[1] != '') {
+                    users[i][3] = data[1]
+                }
+                if (data[1] != '') {
+                    users[i][4] = data[2]
+                }
+                if (data[1] != '') {
+                    users[i][5] = data[3]
+                }
+                if (data[1] != '') {
+                    users[i][6] = data[4]
+                }
+            }
+        }
+        console.log(users);
+    }
 }
 
 module.exports = DataHandler;

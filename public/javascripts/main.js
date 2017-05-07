@@ -24,6 +24,7 @@ class main {
         document.getElementById('activeuser').style.display = "none";
         document.getElementById('activeemail').style.display = "none";
         document.getElementById('userPage').style.display = "none";
+        document.getElementById('talkbubble').style.display = "none";
     }
 
     static handleSignup() {
@@ -48,6 +49,7 @@ class main {
                         document.getElementById('signupPassword').value = '';
                         document.getElementById('confirmPassword').value = '';
                         document.getElementById('username').value = '';
+                        document.getElementById('talkbubble').style.display = 'block';
                         document.getElementById('activeuser').style.display = 'block';
                         document.getElementById('loginButton').style.display = 'none';
                         document.getElementById('registerButton').style.display = 'none';
@@ -75,6 +77,7 @@ class main {
                         document.getElementById('email').value = '';
                         document.getElementById('password').value = '';
                         document.getElementById('activeuser').style.display = 'block';
+                        document.getElementById('talkbubble').style.display = 'block';
                         document.getElementById('loginButton').style.display = 'none';
                         document.getElementById('registerButton').style.display = 'none';
                     }
@@ -84,7 +87,15 @@ class main {
     }
 
     static handleAboutMe() {
-
+        document.getElementById('userpageSubmit').addEventListener('click', () => {
+            main.performAjax('XMLHttpRequest4', JSON.stringify([document.getElementById('activeemail').innerHTML, document.getElementById('hobby').value, document.getElementById('job').value, document.getElementById('goal').value, document.getElementById('identity').value]), () => {
+                alert('Data updated! Future chat partners will be made aware of this information. If you\'re not okay with that, just put in new information and re-submit.');
+                document.getElementById('hobby').value = '';
+                document.getElementById('job').value = '';
+                document.getElementById('goal').value = '';
+                document.getElementById('identity').value = '';
+            });
+        });
     }
 
     static switchPages() {
