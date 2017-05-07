@@ -184,6 +184,30 @@ header {
   background-clip: text;
 }
 
+#otheruseraddcomment {
+  position: absolute;
+  float: left;
+  left: 15%;
+  top: 41%;
+}
+
+#otherusercomments {
+  position: absolute;
+  resize: none;
+  top: 40%;
+  left: 42%;
+}
+
+#otheruserPage {
+  padding-top: 15%;
+}
+
+#otheruserspeechbubble {
+  position: absolute;
+  left: 1%;
+  top: -55%;
+}
+
 #password:focus {
   border-color: blue yellow green red;
 }

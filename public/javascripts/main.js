@@ -25,6 +25,7 @@ class main {
         document.getElementById('activeemail').style.display = "none";
         document.getElementById('userPage').style.display = "none";
         document.getElementById('talkbubble').style.display = "none";
+        document.getElementById('otherUserPage').style.display = "none";
     }
 
     static handleSignup() {
@@ -113,18 +114,26 @@ class main {
             document.getElementById('userPage').style.display = "block";
             document.getElementById('mainPage').style.display = "none";
             document.getElementById('userpageTitle').innerHTML = 'So, ' + document.getElementById('activeuser').innerHTML + ', what\'s your story?';
+            document.getElementById('talkbubble').style.display = "none";
         });
         document.getElementById('shortName').addEventListener('click', () => {
             document.getElementById('mainPage').style.display = "block";
             document.getElementById('loginPage').style.display = "none";
             document.getElementById('userPage').style.display = "none";
             document.getElementById('signupPage').style.display = "none";
+            document.getElementById('talkbubble').style.display = "none";
         });
         document.getElementById('fullName').addEventListener('click', () => {
             document.getElementById('mainPage').style.display = "block";
             document.getElementById('loginPage').style.display = "none";
             document.getElementById('userPage').style.display = "none";
             document.getElementById('signupPage').style.display = "none";
+            document.getElementById('talkbubble').style.display = "none";
+        });
+        document.getElementById('talkbubble').addEventListener('click', () => {
+            document.getElementById('otherUserPage').style.display = "block";
+            document.getElementById('userPage').style.display = "none";
+            document.getElementById('mainPage').style.display = "none";
         });
     }
 
