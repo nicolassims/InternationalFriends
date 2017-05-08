@@ -90,7 +90,7 @@ header {
 }
 
 #activeuser:hover {
-  font-size: xx-large;
+  filter: invert(100%);
 }
 
 #addComment {
@@ -132,8 +132,7 @@ header {
 }
 
 #fullName:hover {
-  font-size: 350%;
-  left: 35%;
+  filter: invert(100%);
 }
 
 #goal:focus {
@@ -223,8 +222,7 @@ header {
 }
 
 #shortName:hover {
-  font-size: 400%;
-  left: 46%;
+  filter: invert(100%);
 }
 
 #signupEmail:focus {

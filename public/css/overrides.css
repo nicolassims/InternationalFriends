@@ -76,7 +76,7 @@ header {
   font-size: x-large; }
 
 #activeuser:hover {
-  font-size: xx-large; }
+  filter: invert(100%); }
 
 #addComment {
   position: absolute;
@@ -110,8 +110,7 @@ header {
   top: 50%; }
 
 #fullName:hover {
-  font-size: 350%;
-  left: 35%; }
+  filter: invert(100%); }
 
 #goal:focus {
   border-color: blue yellow green red; }
@@ -184,8 +183,7 @@ header {
   left: 47%; }
 
 #shortName:hover {
-  font-size: 400%;
-  left: 46%; }
+  filter: invert(100%); }
 
 #signupEmail:focus {
   border-color: blue yellow green red; }
