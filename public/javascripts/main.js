@@ -90,7 +90,7 @@ class main {
     static handleAboutMe() {
         document.getElementById('userpageSubmit').addEventListener('click', () => {
             main.performAjax('XMLHttpRequest4', JSON.stringify([document.getElementById('activeemail').innerHTML, document.getElementById('hobby').value, document.getElementById('job').value, document.getElementById('goal').value, document.getElementById('identity').value]), () => {
-                alert('Data updated! Future chat partners will be made aware of this information. If you\'re not okay with that, just put in new information and re-submit.');
+                alert('Data updated! Future chat partners will gradually be made aware of this information when you chat. If you\'re not okay with that, just put in new information and re-submit.');
                 document.getElementById('hobby').value = '';
                 document.getElementById('job').value = '';
                 document.getElementById('goal').value = '';
@@ -113,6 +113,7 @@ class main {
         document.getElementById('activeuser').addEventListener('click', () => {
             document.getElementById('userPage').style.display = "block";
             document.getElementById('mainPage').style.display = "none";
+            document.getElementById('otherUserPage').style.display = "none";
             document.getElementById('userpageTitle').innerHTML = 'So, ' + document.getElementById('activeuser').innerHTML + ', what\'s your story?';
         });
         document.getElementById('shortName').addEventListener('click', () => {
@@ -120,17 +121,29 @@ class main {
             document.getElementById('loginPage').style.display = "none";
             document.getElementById('userPage').style.display = "none";
             document.getElementById('signupPage').style.display = "none";
+            document.getElementById('otherUserPage').style.display = "none";
         });
         document.getElementById('fullName').addEventListener('click', () => {
             document.getElementById('mainPage').style.display = "block";
             document.getElementById('loginPage').style.display = "none";
             document.getElementById('userPage').style.display = "none";
             document.getElementById('signupPage').style.display = "none";
+            document.getElementById('otherUserPage').style.display = "none";
         });
         document.getElementById('talkbubble').addEventListener('click', () => {
             document.getElementById('otherUserPage').style.display = "block";
             document.getElementById('userPage').style.display = "none";
             document.getElementById('mainPage').style.display = "none";
+            main.performAjax('XMLHttpRequest5', JSON.stringify(document.getElementById('activeemail').innerHTML), (response) => {
+                if (response == 1) {
+                    alert('Well, this is embarrassing. Turns out there are no other online users right now. Sorry!');
+                    document.getElementById('mainPage').style.display = "block";
+                    document.getElementById('otherUserPage').style.display = "none";
+                } else {
+                    response = JSON.parse(response);
+                    document.getElementById('otheruserpageTitle').innerHTML = response[0];
+                }
+            });
         });
     }
 

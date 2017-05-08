@@ -48,7 +48,6 @@ class DataHandler {
     static handleUserIdentity(data) {
         data = JSON.parse(data);
         data = data.toString().split(/,/);
-        console.log(data);
         for (let i = 0; i < users.length; i++) {
             if (data[0] == users[i][0]) {
                 if (data[1] != '') {
@@ -65,7 +64,23 @@ class DataHandler {
                 }
             }
         }
-        console.log(users);
+    }
+
+    static getChatPartner(data) {
+        let partnerID = Math.floor(Math.random() * (users.length - 1));
+        console.log(partnerID);
+        console.log(data);
+        console.log(users[partnerID][0]);
+        if (data == JSON.stringify(users[partnerID][0])) {
+            partnerID++;
+            if (users[partnerID][0] == null) {
+                partnerID = partnerID - 2;
+                if (users[partnerID][0] == null) {
+                    return 1;
+                }
+            }
+        }
+        return users[partnerID];
     }
 }
 
