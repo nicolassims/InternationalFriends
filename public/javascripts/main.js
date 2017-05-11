@@ -189,6 +189,7 @@ class main {
                 let sendaway = '<div style="text-align: center;border-bottom: 1px black solid">' + document.getElementById('otherusercommentText').value.replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/'/g, "&#039;").replace(/\\/g, "&#92;") + '</div><br>';
                 document.getElementById('otherusercommentText').value = '';
                 main.performAjax('XMLHttpRequest6', JSON.stringify([document.getElementById('activeemail').innerHTML, document.getElementById('otheruserpageTitle').innerHTML, [sendaway]]), (response) => {
+                    response = JSON.stringify(response);
                     response = response.replace(/"]/g, '').replace(/\["/g, '').replace(/\\"/g, '').replace(/","/g, '');
                     document.getElementById('otherusercomments').innerHTML = response;
                 });
