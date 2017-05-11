@@ -1,7 +1,5 @@
 "use strict";
 
-const IO = require('fs');
-
 let comments = [];
 let users = [];
 let worldWideComments = [];
@@ -70,7 +68,9 @@ class DataHandler {
     static getChatPartner(data) {
         let tries = 0;
         while (tries < 5) {
-            let partnerID = Math.floor(Math.random() * (users.length - 1));
+            let min = Math.ceil(0);
+            let max = Math.floor(users.length - 1);
+            let partnerID = Math.floor(Math.random() * (max - min + 1)) + min;
             if (data == JSON.stringify(users[partnerID][0])) {
                 tries++
             } else {

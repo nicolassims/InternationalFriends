@@ -1,6 +1,6 @@
 "use strict";
 
-const DATA_HANDLER = require('./node/DataHandler.js'), IO = require(`fs`);
+const DATA_HANDLER = require('./node/DataHandler.js');
 
 class app {
     constructor() {
