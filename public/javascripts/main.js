@@ -190,7 +190,8 @@ class main {
                 document.getElementById('otherusercommentText').value = '';
                 main.performAjax('XMLHttpRequest6', JSON.stringify([document.getElementById('activeemail').innerHTML, document.getElementById('otheruserpageTitle').innerHTML, [sendaway]]), (response) => {
                     response = JSON.stringify(response);
-                    response = response.replace(/"]/g, '').replace(/\["/g, '').replace(/\\"/g, '').replace(/","/g, '');
+                    response = response.replace(/"]/g, '').replace(/\["/g, '').replace(/\\"/g, '').replace(/","/g, '').replace(/"\[\[/g, '').replace(/\\,\[/g, '').replace(/\\,/g, '');
+                    console.log(response);
                     document.getElementById('otherusercomments').innerHTML = response;
                 });
             }
