@@ -171,7 +171,7 @@ class main {
             if (document.getElementById('commentText').value == '') {
                 alert('Cat got your tongue?');
             } else {
-                let sendaway = '<div style="text-align: center;border-bottom: 1px black solid">' + document.getElementById('commentText').value.replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/'/g, "&#039;").replace(/\\/g, "&#92;") + '</div><br>';
+                let sendaway = '<div style="text-align: center">' + document.getElementById('commentText').value.replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/'/g, "&#039;").replace(/\\/g, "&#92;") + '</div><br>';
                 document.getElementById('commentText').value = '';
                 main.performAjax('XMLHttpRequest1', JSON.stringify(sendaway), (response) => {
                     response = response.replace(/"]/g, '').replace(/\["/g, '').replace(/\\"/g, '').replace(/","/g, '');
@@ -186,7 +186,7 @@ class main {
             if (document.getElementById('otherusercommentText').value == '') {
                 alert('Don\'t be shy, now!');
             } else {
-                let sendaway = '<div style="text-align: center;border-bottom: 1px black solid">' + document.getElementById('otherusercommentText').value.replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/'/g, "&#039;").replace(/\\/g, "&#92;") + '</div><br>';
+                let sendaway = '<div style="text-align: center">' + document.getElementById('otherusercommentText').value.replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/'/g, "&#039;").replace(/\\/g, "&#92;") + '</div><br>';
                 document.getElementById('otherusercommentText').value = '';
                 main.performAjax('XMLHttpRequest6', JSON.stringify([document.getElementById('activeemail').innerHTML, document.getElementById('otheruserpageTitle').innerHTML, [sendaway]]), (response) => {
                     response = JSON.stringify(response);
