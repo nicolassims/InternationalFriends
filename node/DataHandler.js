@@ -4,6 +4,7 @@ const IO = require('fs');
 
 let comments = [];
 let users = [];
+let worldWideComments = [];
 
 class DataHandler {
     static refreshComments() {
@@ -67,20 +68,33 @@ class DataHandler {
     }
 
     static getChatPartner(data) {
-        let partnerID = Math.floor(Math.random() * (users.length - 1));
-        console.log(partnerID);
-        console.log(data);
-        console.log(users[partnerID][0]);
-        if (data == JSON.stringify(users[partnerID][0])) {
-            partnerID++;
-            if (users[partnerID][0] == null) {
-                partnerID = partnerID - 2;
-                if (users[partnerID][0] == null) {
-                    return 1;
-                }
+        let tries = 0;
+        while (tries < 5) {
+            let partnerID = Math.floor(Math.random() * (users.length - 1));
+            if (data == JSON.stringify(users[partnerID][0])) {
+                tries++
+            } else {
+                return users[partnerID];
             }
         }
-        return users[partnerID];
+        return 1;
+    }
+
+    static chatWithPartner(data) {
+        data = JSON.parse(data);
+        if (worldWideComments.length == 0) {
+            worldWideComments[0] = data;
+        } else {
+
+            for (let i = 0; i < worldWideComments.length; i++) {
+                if (data[0] == worldWideComments[i][0] && data[1] == worldWideComments[i][1] || data[0] == worldWideComments[i][1] && data[1] == worldWideComments[i][0]) {
+                    worldWideComments[i][2].unshift(data[2]);
+                    return worldWideComments;
+                }
+            }
+            worldWideComments[worldWideComments.length] = data;
+        }
+        return worldWideComments;
     }
 }
 

@@ -16,6 +16,7 @@ class main {
         main.handleLogin();
         main.preventEnterKeys();
         main.handleAboutMe();
+        main.sendDM();
     }
 
     static hidePages() {
@@ -26,6 +27,7 @@ class main {
         document.getElementById('userPage').style.display = "none";
         document.getElementById('talkbubble').style.display = "none";
         document.getElementById('otherUserPage').style.display = "none";
+        document.getElementById('messagebox').style.display = "none";
     }
 
     static handleSignup() {
@@ -51,6 +53,7 @@ class main {
                         document.getElementById('confirmPassword').value = '';
                         document.getElementById('username').value = '';
                         document.getElementById('talkbubble').style.display = 'block';
+                        document.getElementById('messagebox').style.display = 'block';
                         document.getElementById('activeuser').style.display = 'block';
                         document.getElementById('loginButton').style.display = 'none';
                         document.getElementById('registerButton').style.display = 'none';
@@ -79,6 +82,7 @@ class main {
                         document.getElementById('password').value = '';
                         document.getElementById('activeuser').style.display = 'block';
                         document.getElementById('talkbubble').style.display = 'block';
+                        document.getElementById('messagebox').style.display = 'block';
                         document.getElementById('loginButton').style.display = 'none';
                         document.getElementById('registerButton').style.display = 'none';
                     }
@@ -140,8 +144,10 @@ class main {
                     document.getElementById('mainPage').style.display = "block";
                     document.getElementById('otherUserPage').style.display = "none";
                 } else {
+                    alert('You\'re chatting! Have fun, and be nice!');
                     response = JSON.parse(response);
                     document.getElementById('otheruserpageTitle').innerHTML = response[0];
+                    document.getElementById('otheruserpageTitle').style.display = 'none';
                 }
             });
         });
@@ -175,8 +181,28 @@ class main {
         });
     }
 
+    static sendDM() {
+        document.getElementById('otheruseraddcomment').addEventListener('click', () => {
+            if (document.getElementById('otherusercommentText').value == '') {
+                alert('Don\'t be shy, now!');
+            } else {
+                let sendaway = '<div style="text-align: center;border-bottom: 1px black solid">' + document.getElementById('otherusercommentText').value.replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/'/g, "&#039;").replace(/\\/g, "&#92;") + '</div><br>';
+                document.getElementById('otherusercommentText').value = '';
+                main.performAjax('XMLHttpRequest6', JSON.stringify([document.getElementById('activeemail').innerHTML, document.getElementById('otheruserpageTitle').innerHTML, [sendaway]]), (response) => {
+                    response = response.replace(/"]/g, '').replace(/\["/g, '').replace(/\\"/g, '').replace(/","/g, '');
+                    document.getElementById('otherusercomments').innerHTML = response;
+                });
+            }
+        });
+    }
+
     static preventEnterKeys() {
         document.getElementById('commentText').addEventListener('keypress', (evt) => {
+            if (evt.which === 13) {
+                evt.preventDefault();
+            }
+        });
+        document.getElementById('otherusercommentText').addEventListener('keypress', (evt) => {
             if (evt.which === 13) {
                 evt.preventDefault();
             }

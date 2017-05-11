@@ -151,6 +151,14 @@ header {
   -webkit-background-clip: text;
   background-clip: text; }
 
+#messagebox {
+  position: absolute;
+  right: 12%;
+  top: 20%; }
+
+#messagebox:hover {
+  filter: invert(100%); }
+
 #otheruseraddcomment {
   position: absolute;
   float: left;
@@ -158,6 +166,9 @@ header {
   top: 41%; }
 
 #otherusercomments {
+  padding-top: 25%; }
+
+#otherusercommentText {
   position: absolute;
   resize: none;
   top: 40%;
