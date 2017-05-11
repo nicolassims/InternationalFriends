@@ -193,6 +193,16 @@ header {
   filter: invert(100%);
 }
 
+#messagebox2 {
+  position: absolute;
+  right: 12%;
+  top: 20%;
+}
+
+#messagebox2:hover {
+  filter: invert(100%);
+}
+
 #otheruseraddcomment {
   position: absolute;
   float: left;

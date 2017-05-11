@@ -100,6 +100,16 @@ class DataHandler {
         console.log(worldWideComments);
         return worldWideComments[worldWideComments.length][2];
     }
+
+    static checkMessages(data) {
+        for (let i = 0; i < worldWideComments.length; i++) {
+            if (data == worldWideComments[i][0] || data == worldWideComments[i][1]) {
+                if (worldWideComments[i][3] != data) {
+                    return 1;
+                }
+            }
+        }
+    }
 }
 
 module.exports = DataHandler;

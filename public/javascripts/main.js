@@ -17,6 +17,7 @@ class main {
         main.preventEnterKeys();
         main.handleAboutMe();
         main.sendDM();
+        main.manualCheckMessages();
     }
 
     static hidePages() {
@@ -28,6 +29,7 @@ class main {
         document.getElementById('talkbubble').style.display = "none";
         document.getElementById('otherUserPage').style.display = "none";
         document.getElementById('messagebox').style.display = "none";
+        document.getElementById('messagebox2').style.display = "none";
     }
 
     static handleSignup() {
@@ -88,6 +90,7 @@ class main {
                     }
                 });
             }
+            main.checkMessages();
         });
     }
 
@@ -99,7 +102,9 @@ class main {
                 document.getElementById('job').value = '';
                 document.getElementById('goal').value = '';
                 document.getElementById('identity').value = '';
+
             });
+            main.checkMessages();
         });
     }
 
@@ -108,17 +113,20 @@ class main {
             document.getElementById('signupPage').style.display = "block";
             document.getElementById('mainPage').style.display = "none";
             document.getElementById('loginPage').style.display = "none";
+            main.checkMessages();
         });
         document.getElementById('loginButton').addEventListener('click', () => {
             document.getElementById('loginPage').style.display = "block";
             document.getElementById('mainPage').style.display = "none";
             document.getElementById('signupPage').style.display = "none";
+            main.checkMessages();
         });
         document.getElementById('activeuser').addEventListener('click', () => {
             document.getElementById('userPage').style.display = "block";
             document.getElementById('mainPage').style.display = "none";
             document.getElementById('otherUserPage').style.display = "none";
             document.getElementById('userpageTitle').innerHTML = 'So, ' + document.getElementById('activeuser').innerHTML + ', what\'s your story?';
+            main.checkMessages();
         });
         document.getElementById('shortName').addEventListener('click', () => {
             document.getElementById('mainPage').style.display = "block";
@@ -126,6 +134,7 @@ class main {
             document.getElementById('userPage').style.display = "none";
             document.getElementById('signupPage').style.display = "none";
             document.getElementById('otherUserPage').style.display = "none";
+            main.checkMessages();
         });
         document.getElementById('fullName').addEventListener('click', () => {
             document.getElementById('mainPage').style.display = "block";
@@ -133,6 +142,7 @@ class main {
             document.getElementById('userPage').style.display = "none";
             document.getElementById('signupPage').style.display = "none";
             document.getElementById('otherUserPage').style.display = "none";
+            main.checkMessages();
         });
         document.getElementById('talkbubble').addEventListener('click', () => {
             document.getElementById('otherUserPage').style.display = "block";
@@ -150,6 +160,7 @@ class main {
                     document.getElementById('otheruserpageTitle').style.display = 'none';
                 }
             });
+            main.checkMessages();
         });
     }
 
@@ -163,6 +174,7 @@ class main {
                     alert('Seems no one else is talking... why don\'t you start a conversation?');
                 }
             });
+            main.checkMessages();
         });
     }
 
@@ -178,6 +190,7 @@ class main {
                     document.getElementById('comments').innerHTML = response;
                 });
             }
+            main.checkMessages();
         });
     }
 
@@ -194,6 +207,39 @@ class main {
                     document.getElementById('otherusercomments').innerHTML = response;
                 });
             }
+            main.checkMessages();
+        });
+    }
+
+    static manualCheckMessages() {
+        document.getElementById('messagebox').addEventListener('click', () => {
+            main.performAjax('XMLHttpRequest7', document.getElementById('activeemail').innerHTML, (response) => {
+                if (response == 1) {
+                    console.log('responseis1');
+                    document.getElementById('messagebox').style.display = "none";
+                    document.getElementById('messagebox2').style.display = "block";
+
+                } else {
+                    alert('No new messages yet. Hang tight, though, something is sure to come through!');
+                }
+            });
+        });
+    }
+
+    static checkMessages() {
+        main.performAjax('XMLHttpRequest7', document.getElementById('activeemail').innerHTML, (response) => {
+            if (response == 1) {
+                console.log('responseis1');
+                document.getElementById('messagebox').style.display = "none";
+                document.getElementById('messagebox2').style.display = "block";
+
+            }
+        });
+    }
+
+    static respondToMessages() {
+        document.getElementById('otheruseraddcomment').addEventListener('click', () => {
+            //WORK HERE
         });
     }
 
