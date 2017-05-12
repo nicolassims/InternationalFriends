@@ -82,22 +82,20 @@ class DataHandler {
 
     static chatWithPartner(data) {
         data = JSON.parse(data);
+        console.log(data);
         if (worldWideComments.length == 0) {
             worldWideComments[0] = data;
-            console.log(worldWideComments);
             return worldWideComments[0][2];
         } else {
             for (let i = 0; i < worldWideComments.length; i++) {
                 if (data[0] == worldWideComments[i][0] && data[1] == worldWideComments[i][1] || data[0] == worldWideComments[i][1] && data[1] == worldWideComments[i][0]) {
                     worldWideComments[i][2].unshift(data[2]);
                     worldWideComments[i][3] = data[3];
-                    console.log(worldWideComments);
                     return worldWideComments[i][2];
                 }
             }
             worldWideComments[worldWideComments.length] = data;
         }
-        console.log(worldWideComments);
         return worldWideComments[worldWideComments.length][2];
     }
 
@@ -106,6 +104,16 @@ class DataHandler {
             if (data == worldWideComments[i][0] || data == worldWideComments[i][1]) {
                 if (worldWideComments[i][3] != data) {
                     return 1;
+                }
+            }
+        }
+    }
+
+    static resumeConvo(data) {
+        for (let i = 0; i < worldWideComments.length; i++) {
+            if (data == worldWideComments[i][0] || data == worldWideComments[i][1]) {
+                if (worldWideComments[i][3] != data) {
+                    return worldWideComments[i];
                 }
             }
         }

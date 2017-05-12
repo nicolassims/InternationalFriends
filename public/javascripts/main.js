@@ -18,6 +18,7 @@ class main {
         main.handleAboutMe();
         main.sendDM();
         main.manualCheckMessages();
+        main.respondToMessages();
     }
 
     static hidePages() {
@@ -156,6 +157,7 @@ class main {
                 } else {
                     alert('You\'re chatting! Have fun, and be nice!');
                     response = JSON.parse(response);
+                    console.log(response);
                     document.getElementById('otheruserpageTitle').innerHTML = response[0];
                     document.getElementById('otheruserpageTitle').style.display = 'none';
                 }
@@ -201,7 +203,7 @@ class main {
             } else {
                 let sendaway = '<div style="text-align: center">' + document.getElementById('otherusercommentText').value.replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/'/g, "&#039;").replace(/\\/g, "&#92;") + '</div><br>';
                 document.getElementById('otherusercommentText').value = '';
-                main.performAjax('XMLHttpRequest6', JSON.stringify([document.getElementById('activeemail').innerHTML, document.getElementById('otheruserpageTitle').innerHTML, [sendaway], document.getElementById('activeemail').innerHTML]), (response) => {
+               /* FIX THIS*/ main.performAjax('XMLHttpRequest6', JSON.stringify([document.getElementById('activeemail').innerHTML, document.getElementById('otheruserpageTitle').innerHTML, [sendaway], document.getElementById('activeemail').innerHTML]), (response) => {
                     response = JSON.stringify(response);
                     response = response.replace(/"]/g, '').replace(/\["/g, '').replace(/\\"/g, '').replace(/","/g, '').replace(/"\[\[/g, '').replace(/\\,\[/g, '').replace(/\\,/g, '').replace(/"\[/g, '');
                     document.getElementById('otherusercomments').innerHTML = response;
@@ -218,7 +220,6 @@ class main {
                     console.log('responseis1');
                     document.getElementById('messagebox').style.display = "none";
                     document.getElementById('messagebox2').style.display = "block";
-
                 } else {
                     alert('No new messages yet. Hang tight, though, something is sure to come through!');
                 }
@@ -229,17 +230,25 @@ class main {
     static checkMessages() {
         main.performAjax('XMLHttpRequest7', document.getElementById('activeemail').innerHTML, (response) => {
             if (response == 1) {
-                console.log('responseis1');
                 document.getElementById('messagebox').style.display = "none";
                 document.getElementById('messagebox2').style.display = "block";
-
             }
         });
     }
 
     static respondToMessages() {
-        document.getElementById('otheruseraddcomment').addEventListener('click', () => {
-            //WORK HERE
+        document.getElementById('messagebox2').addEventListener('click', () => {
+            document.getElementById('otherUserPage').style.display = "block";
+            document.getElementById('userPage').style.display = "none";
+            document.getElementById('mainPage').style.display = "none";
+            main.performAjax('XMLHttpRequest8', JSON.stringify(document.getElementById('activeemail').innerHTML), (response) => {
+                alert('You\'re chatting! Have fun, and be nice!');
+                response = JSON.parse(response);
+                document.getElementById('otheruserpageTitle').innerHTML = response[1];
+                document.getElementById('otheruserpageTitle').style.display = 'none';
+                document.getElementById('otherusercomments').innerHTML = response[2];
+            });
+            main.checkMessages();
         });
     }
 
