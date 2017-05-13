@@ -107,14 +107,19 @@ header {
 }
 
 #comments {
-  padding-top: 25%;
+  padding-top: 30%;
+  margin-left: -3%;
 }
 
 #commentText {
   position: absolute;
   resize: none;
   top: 40%;
-  left: 42%;
+  left: 41%;
+}
+
+#commentText:focus {
+  border-color: blue yellow green red;
 }
 
 #confirmPassword:focus {
@@ -144,10 +149,6 @@ header {
   position: absolute;
   right: 20%;
   top: 41%;
-}
-
-#goal:focus {
-  border-color: blue yellow green red;
 }
 
 #hobby:focus {
@@ -212,6 +213,11 @@ header {
 
 #otherusercomments {
   padding-top: 10%;
+  margin-left: -3%;
+}
+
+#otherusercomments:focus {
+  border-color: blue yellow green red;
 }
 
 #otherusercommentText {
@@ -219,6 +225,11 @@ header {
   resize: none;
   top: 25%;
   left: 42%;
+}
+
+
+#otherusercommentText:focus {
+  border-color: blue yellow green red;
 }
 
 #otheruserPage {
