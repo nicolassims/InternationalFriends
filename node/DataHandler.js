@@ -82,7 +82,9 @@ class DataHandler {
 
     static chatWithPartner(data) {
         data = JSON.parse(data);
+        data[1] = data[1].replace(/"/g, '');
         console.log(data);
+        console.log(worldWideComments);
         if (worldWideComments.length == 0) {
             worldWideComments[0] = data;
             return worldWideComments[0][2];
@@ -103,10 +105,11 @@ class DataHandler {
         for (let i = 0; i < worldWideComments.length; i++) {
             if (data == worldWideComments[i][0] || data == worldWideComments[i][1]) {
                 if (worldWideComments[i][3] != data) {
-                    return 1;
+                    return worldWideComments[i][3]
                 }
             }
         }
+        return 1;
     }
 
     static resumeConvo(data) {

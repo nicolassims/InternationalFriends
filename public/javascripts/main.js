@@ -203,7 +203,7 @@ class main {
             } else {
                 let sendaway = '<div style="text-align: center">' + document.getElementById('otherusercommentText').value.replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/'/g, "&#039;").replace(/\\/g, "&#92;") + '</div><br>';
                 document.getElementById('otherusercommentText').value = '';
-               /* FIX THIS*/ main.performAjax('XMLHttpRequest6', JSON.stringify([document.getElementById('activeemail').innerHTML, document.getElementById('otheruserpageTitle').innerHTML, [sendaway], document.getElementById('activeemail').innerHTML]), (response) => {
+                main.performAjax('XMLHttpRequest6', JSON.stringify([document.getElementById('activeemail').innerHTML, document.getElementById('otheruserpageTitle').innerHTML, [sendaway], document.getElementById('activeemail').innerHTML]), (response) => {
                     response = JSON.stringify(response);
                     response = response.replace(/"]/g, '').replace(/\["/g, '').replace(/\\"/g, '').replace(/","/g, '').replace(/"\[\[/g, '').replace(/\\,\[/g, '').replace(/\\,/g, '').replace(/"\[/g, '');
                     document.getElementById('otherusercomments').innerHTML = response;
@@ -216,11 +216,15 @@ class main {
     static manualCheckMessages() {
         document.getElementById('messagebox').addEventListener('click', () => {
             main.performAjax('XMLHttpRequest7', document.getElementById('activeemail').innerHTML, (response) => {
-                if (response == 1) {
+                if (response != 1) {
                     console.log('responseis1');
                     document.getElementById('messagebox').style.display = "none";
                     document.getElementById('messagebox2').style.display = "block";
+                    console.log(response);
+                    document.getElementById('otheruserpageTitle').innerHTML = response;
                 } else {
+                    document.getElementById('messagebox').style.display = "block";
+                    document.getElementById('messagebox2').style.display = "none";
                     alert('No new messages yet. Hang tight, though, something is sure to come through!');
                 }
             });
@@ -229,9 +233,13 @@ class main {
 
     static checkMessages() {
         main.performAjax('XMLHttpRequest7', document.getElementById('activeemail').innerHTML, (response) => {
-            if (response == 1) {
+            if (response != 1) {
                 document.getElementById('messagebox').style.display = "none";
                 document.getElementById('messagebox2').style.display = "block";
+                document.getElementById('otheruserpageTitle').innerHTML = response;
+            } else {
+                document.getElementById('messagebox').style.display = "block";
+                document.getElementById('messagebox2').style.display = "none";
             }
         });
     }
