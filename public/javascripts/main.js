@@ -183,7 +183,7 @@ class main {
     static handleAboutMe() {
         document.getElementById('userpageSubmit').addEventListener('click', () => {
             main.performAjax('XMLHttpRequest4', JSON.stringify([document.getElementById('activeemail').innerHTML, document.getElementById('hobby').value, document.getElementById('job').value, document.getElementById('goal').value, document.getElementById('identity').value]), () => {
-                alert('Data updated! Future chat partners will gradually be made aware of this information when you chat. If you\'re not okay with that, just put in new information and re-submit.');
+                alert('Data updated! Future chat partners will not be made aware of this information when you chat. It may be used to match you up with partners who are unlike you. If you want the matching process to be completely random, as it is by default, then re-submit your answers with the fields blank.');
                 document.getElementById('hobby').value = '';
                 document.getElementById('job').value = '';
                 document.getElementById('goal').value = '';
