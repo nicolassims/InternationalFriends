@@ -96,7 +96,7 @@ class DataHandler {
             }
             worldWideComments[worldWideComments.length] = data;
         }
-        return worldWideComments[worldWideComments.length][2];
+        return worldWideComments[worldWideComments.length - 1][2];
     }
 
     static checkMessages(data) {
@@ -113,7 +113,6 @@ class DataHandler {
     static refreshOtherUserComments(data) {
         data = JSON.parse(data);
         data[1] = data[1].replace(/\\"/, '').replace(/"/g, '');
-        console.log(data);
         for (let i = 0; i < worldWideComments.length; i++) {
             if (data[0] == worldWideComments[i][0] && data[1] == worldWideComments[i][1] && worldWideComments[i][3] != data[0] || data[0] == worldWideComments[i][1] && data[1] == worldWideComments[i][0] && worldWideComments[i][3] != data[0]) {
                 return worldWideComments[i][2];
