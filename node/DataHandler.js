@@ -120,6 +120,16 @@ class DataHandler {
         }
     }
 
+    static refreshOtherUserComments2(data) {
+        data = JSON.parse(data);
+        data[1] = data[1].replace(/\\"/, '').replace(/"/g, '');
+        for (let i = 0; i < worldWideComments.length; i++) {
+            if (data[0] == worldWideComments[i][0] && data[1] == worldWideComments[i][1] || data[0] == worldWideComments[i][1] && data[1] == worldWideComments[i][0]) {
+                return worldWideComments[i][2];
+            }
+        }
+    }
+
     static resumeConvo(data) {
         for (let i = 0; i < worldWideComments.length; i++) {
             if (data == worldWideComments[i][0] || data == worldWideComments[i][1]) {

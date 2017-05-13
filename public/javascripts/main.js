@@ -244,7 +244,7 @@ class main {
                     response = JSON.parse(response);
                     document.getElementById('otheruserpageTitle').innerHTML = response[0];
                     document.getElementById('otheruserpageTitle').style.display = 'none';
-                    main.performAjax('XMLHttpRequest9', JSON.stringify([document.getElementById('activeemail').innerHTML, document.getElementById('otheruserpageTitle').innerHTML]), (response) => {
+                    main.performAjax('XMLHttpRequest10', JSON.stringify([document.getElementById('activeemail').innerHTML, document.getElementById('otheruserpageTitle').innerHTML]), (response) => {
                         response = JSON.stringify(response);
                         response = response.replace(/"]/g, '').replace(/\["/g, '').replace(/\\"/g, '').replace(/","/g, '').replace(/"\[\[/g, '').replace(/\\,\[/g, '').replace(/\\,/g, '').replace(/"\[/g, '').replace(/""/g, '');
                         document.getElementById('otherusercomments').innerHTML = response;
