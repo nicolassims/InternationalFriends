@@ -41,7 +41,6 @@ class main {
                 alert(`Your passwords don't match. Want to fix that?`)
             } else {
                 main.performAjax('XMLHttpRequest2', JSON.stringify([document.getElementById('signupEmail').value, document.getElementById('signupPassword').value, document.getElementById('username').value]), (response) => {
-                    console.log(response);
                     if (response == '1') {
                         alert('There\'s already a user with that email address.')
                     } else {
@@ -157,7 +156,6 @@ class main {
                 } else {
                     alert('You\'re chatting! Have fun, and be nice!');
                     response = JSON.parse(response);
-                    console.log(response);
                     document.getElementById('otheruserpageTitle').innerHTML = response[0];
                     document.getElementById('otheruserpageTitle').style.display = 'none';
                 }
@@ -217,10 +215,8 @@ class main {
         document.getElementById('messagebox').addEventListener('click', () => {
             main.performAjax('XMLHttpRequest7', document.getElementById('activeemail').innerHTML, (response) => {
                 if (response != 1) {
-                    console.log('responseis1');
                     document.getElementById('messagebox').style.display = "none";
                     document.getElementById('messagebox2').style.display = "block";
-                    console.log(response);
                     document.getElementById('otheruserpageTitle').innerHTML = response;
                 } else {
                     document.getElementById('messagebox').style.display = "block";
@@ -255,6 +251,11 @@ class main {
                 document.getElementById('otheruserpageTitle').innerHTML = response[1];
                 document.getElementById('otheruserpageTitle').style.display = 'none';
                 document.getElementById('otherusercomments').innerHTML = response[2];
+            });
+            main.performAjax('XMLHttpRequest9', JSON.stringify([document.getElementById('activeemail').innerHTML, document.getElementById('otheruserpageTitle').innerHTML]), (response) => {
+                response = JSON.stringify(response);
+                response = response.replace(/"]/g, '').replace(/\["/g, '').replace(/\\"/g, '').replace(/","/g, '').replace(/"\[\[/g, '').replace(/\\,\[/g, '').replace(/\\,/g, '').replace(/"\[/g, '');
+                document.getElementById('otherusercomments').innerHTML = response;
             });
             main.checkMessages();
         });

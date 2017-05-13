@@ -83,8 +83,6 @@ class DataHandler {
     static chatWithPartner(data) {
         data = JSON.parse(data);
         data[1] = data[1].replace(/"/g, '');
-        console.log(data);
-        console.log(worldWideComments);
         if (worldWideComments.length == 0) {
             worldWideComments[0] = data;
             return worldWideComments[0][2];
@@ -110,6 +108,17 @@ class DataHandler {
             }
         }
         return 1;
+    }
+
+    static refreshOtherUserComments(data) {
+        data = JSON.parse(data);
+        data[1] = data[1].replace(/\\"/, '').replace(/"/g, '');
+        console.log(data);
+        for (let i = 0; i < worldWideComments.length; i++) {
+            if (data[0] == worldWideComments[i][0] && data[1] == worldWideComments[i][1] && worldWideComments[i][3] != data[0] || data[0] == worldWideComments[i][1] && data[1] == worldWideComments[i][0] && worldWideComments[i][3] != data[0]) {
+                return worldWideComments[i][2];
+            }
+        }
     }
 
     static resumeConvo(data) {
