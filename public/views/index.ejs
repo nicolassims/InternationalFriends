@@ -1,10 +1,8 @@
 <% include public/views/header.ejs %>
 
 <div id="mainPage">
-    <div class="poll">
-        <h4 class="questionTitle">Question of the Day</h4>
-        <div class="question">What should I order at your favorite restaurant?</div>
-    </div>
+    <h4 class="questionTitle" id="activeQuestionTitle">Question of the Day</h4>
+    <div class="question" id="activeQuestion">Questions will appear here in about 15 seconds. Feel free to discuss them in chat, or not.</div>
     <button class="commentButtons" id="addComment">
         Speak Your Mind
         <img src="public/images/speechbubble.png" id="speechbubble">

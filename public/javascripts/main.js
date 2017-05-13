@@ -8,6 +8,7 @@
 
 class main {
     constructor() {
+        main.randomizeQuestion();
         main.hidePages();
         main.refreshComments();
         main.addComment();
@@ -33,6 +34,87 @@ class main {
         document.getElementById('otherUserPage').style.display = "none";
         document.getElementById('messagebox').style.display = "none";
         document.getElementById('messagebox2').style.display = "none";
+    }
+
+    static randomizeQuestion() {
+        setInterval(() => {
+            let min = 0;
+            let max = 35;
+            let randomVar = Math.floor(Math.random() * (max - min + 1)) + min;
+            if (randomVar == 0) {
+                document.getElementById('activeQuestion').innerHTML = 'If you could invite anyone in the world to dinner, who would it be?'
+            } else if (randomVar == 1) {
+                document.getElementById('activeQuestion').innerHTML = 'Would you like to be famous? In what way?'
+            } else if (randomVar == 2) {
+                document.getElementById('activeQuestion').innerHTML = 'Before making a telephone call, do you ever rehearse what you are going to say?'
+            } else if (randomVar == 3) {
+                document.getElementById('activeQuestion').innerHTML = 'What would you call a perfect day?'
+            } else if (randomVar == 4) {
+                document.getElementById('activeQuestion').innerHTML = 'When was the last time you sang to yourself, or someone else?'
+            } else if (randomVar == 5) {
+                document.getElementById('activeQuestion').innerHTML = 'What do you most want to protect?'
+            } else if (randomVar == 6) {
+                document.getElementById('activeQuestion').innerHTML = 'How are you going to die?'
+            } else if (randomVar == 7) {
+                document.getElementById('activeQuestion').innerHTML = 'What do you want your soulmate to be able to do?'
+            } else if (randomVar == 8) {
+                document.getElementById('activeQuestion').innerHTML = 'What are you most grateful for?'
+            } else if (randomVar == 9) {
+                document.getElementById('activeQuestion').innerHTML = 'Do you have any advice for those younger than you?'
+            } else if (randomVar == 10) {
+                document.getElementById('activeQuestion').innerHTML = 'What\'s your life, in four words?'
+            } else if (randomVar == 11) {
+                document.getElementById('activeQuestion').innerHTML = 'What do you want to master, if it took only a day?'
+            } else if (randomVar == 12) {
+                document.getElementById('activeQuestion').innerHTML = 'What truth do you search for?'
+            } else if (randomVar == 13) {
+                document.getElementById('activeQuestion').innerHTML = 'What is your greatest and most impossible dream?'
+            } else if (randomVar == 14) {
+                document.getElementById('activeQuestion').innerHTML = 'What is your greatest accomplishment?'
+            } else if (randomVar == 15) {
+                document.getElementById('activeQuestion').innerHTML = 'What do you value most in a friend?'
+            } else if (randomVar == 16) {
+                document.getElementById('activeQuestion').innerHTML = 'What is your most treasured memory?'
+            } else if (randomVar == 17) {
+                document.getElementById('activeQuestion').innerHTML = 'What do you not want to remember?'
+            } else if (randomVar == 18) {
+                document.getElementById('activeQuestion').innerHTML = 'If you only had a year left to live, what would you do?'
+            } else if (randomVar == 19) {
+                document.getElementById('activeQuestion').innerHTML = 'What is a friendship, to you?'
+            } else if (randomVar == 20) {
+                document.getElementById('activeQuestion').innerHTML = 'Who loves you most?'
+            } else if (randomVar == 21) {
+                document.getElementById('activeQuestion').innerHTML = 'What is the best characteristic of your best friend?'
+            } else if (randomVar == 22) {
+                document.getElementById('activeQuestion').innerHTML = 'What do you think of your family?'
+            } else if (randomVar == 23) {
+                document.getElementById('activeQuestion').innerHTML = 'How would you describe your mother?'
+            } else if (randomVar == 24) {
+                document.getElementById('activeQuestion').innerHTML = 'How would you describe your father?'
+            } else if (randomVar == 25) {
+                document.getElementById('activeQuestion').innerHTML = 'What do you want your friends to know?'
+            } else if (randomVar == 26) {
+                document.getElementById('activeQuestion').innerHTML = 'What is your name?'
+            } else if (randomVar == 27) {
+                document.getElementById('activeQuestion').innerHTML = 'What is your quest?'
+            } else if (randomVar == 28) {
+                document.getElementById('activeQuestion').innerHTML = 'What is the airspeed velocity of an unladen swallow?'
+            } else if (randomVar == 29) {
+                document.getElementById('activeQuestion').innerHTML = 'How important is honesty to you?'
+            } else if (randomVar == 30) {
+                document.getElementById('activeQuestion').innerHTML = 'What is an embarrassing moment you can now laugh about?'
+            } else if (randomVar == 31) {
+                document.getElementById('activeQuestion').innerHTML = 'When did you last cry?'
+            } else if (randomVar == 32) {
+                document.getElementById('activeQuestion').innerHTML = 'Is there someone on this website you\'ve grown fond of?'
+            } else if (randomVar == 33) {
+                document.getElementById('activeQuestion').innerHTML = 'What, if anything, is too serious to be joked about?'
+            } else if (randomVar == 34) {
+                document.getElementById('activeQuestion').innerHTML = 'If your house started to burn down, what would you save?'
+            } else if (randomVar == 35) {
+                document.getElementById('activeQuestion').innerHTML = 'Why are you on this website?'
+            }
+        }, 15000);
     }
 
     static handleSignup() {

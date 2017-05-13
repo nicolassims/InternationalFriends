@@ -68,6 +68,16 @@ header {
 .signupElement:focus {
   border-color: blue yellow green red; }
 
+#activeQuestion {
+  width: 96%;
+  text-align: center;
+  float: left;
+  margin-left: -34%; }
+
+#activeQuestionTitle {
+  margin-left: -1%;
+  text-align: center; }
+
 #activeuser {
   position: absolute;
   right: 3%;
