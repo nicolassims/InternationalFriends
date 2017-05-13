@@ -19,6 +19,8 @@ class main {
         main.sendDM();
         main.manualCheckMessages();
         main.respondToMessages();
+        main.handleAboutSite();
+        alert('Welcome to I.F.; Welcome to International Friends! As this website is still under development, it is likely to work much more effectively on certain systems than others. It is not yet configured correctly for mobile browsers, for example, so please bear with me while I update the site over time. Bug reports can be sent to sableye.nico@gmail.com. Thank you!')
     }
 
     static hidePages() {
@@ -59,6 +61,7 @@ class main {
                         document.getElementById('activeuser').style.display = 'block';
                         document.getElementById('loginButton').style.display = 'none';
                         document.getElementById('registerButton').style.display = 'none';
+                        document.getElementById('versionbox').style.display = "none";
                     }
                 });
             }
@@ -87,6 +90,7 @@ class main {
                         document.getElementById('messagebox').style.display = 'block';
                         document.getElementById('loginButton').style.display = 'none';
                         document.getElementById('registerButton').style.display = 'none';
+                        document.getElementById('versionbox').style.display = "none";
                     }
                 });
             }
@@ -158,6 +162,11 @@ class main {
                     response = JSON.parse(response);
                     document.getElementById('otheruserpageTitle').innerHTML = response[0];
                     document.getElementById('otheruserpageTitle').style.display = 'none';
+                    main.performAjax('XMLHttpRequest9', JSON.stringify([document.getElementById('activeemail').innerHTML, document.getElementById('otheruserpageTitle').innerHTML]), (response) => {
+                        response = JSON.stringify(response);
+                        response = response.replace(/"]/g, '').replace(/\["/g, '').replace(/\\"/g, '').replace(/","/g, '').replace(/"\[\[/g, '').replace(/\\,\[/g, '').replace(/\\,/g, '').replace(/"\[/g, '').replace(/""/g, '');
+                        document.getElementById('otherusercomments').innerHTML = response;
+                    });
                 }
             });
             main.checkMessages();
@@ -271,6 +280,15 @@ class main {
             if (evt.which === 13) {
                 evt.preventDefault();
             }
+        });
+    }
+
+    static handleAboutSite() {
+        document.getElementById('versionbox').addEventListener('click', () => {
+           alert('Welcome to I.F.; Welcome to International Friends! This website is designed to be a stress-free location for people all around the world, and from many different cultures, to exchange their thoughts.');
+           alert('All communication on this website is 100% anonymous. Other people won\'t know your name, email address, age, location, or ANYTHING else. You are entirely in control of your public Persona here.');
+           alert('There are currently two primary ways to communicate--on the basic homepage, here, where various discussion topics are offered up at random, or you can try a private chat, where you will be matched up with another random user of this website.');
+           alert('If a person is not logged in, they may not respond to your messages right away. That\'s alright! Try chatting with someone new, or join the public chat. This website is going to be big soon, and I\'m so happy you\'re going to be part of it.');
         });
     }
 

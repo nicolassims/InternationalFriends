@@ -327,3 +327,13 @@ header {
 #userpageTitle {
   font-size: x-large;
 }
+
+#versionbox {
+  position: absolute;
+  bottom: 10%;
+  left: 0;
+}
+
+#versionbox:hover {
+  filter: invert(100%);
+}
