@@ -8,6 +8,7 @@
 
 class main {
     constructor() {
+        main.randomizeQuestion();
         main.hidePages();
         main.refreshComments();
         main.addComment();
@@ -19,6 +20,8 @@ class main {
         main.sendDM();
         main.manualCheckMessages();
         main.respondToMessages();
+        main.handleAboutSite();
+        alert('Welcome to I.F.; Welcome to International Friends! As this website is still under development, it is likely to work much more effectively on certain systems than others. It is not yet configured correctly for mobile browsers, for example, so please bear with me while I update the site over time. Bug reports can be sent to sableye.nico@gmail.com. Thank you!')
     }
 
     static hidePages() {
@@ -33,6 +36,87 @@ class main {
         document.getElementById('messagebox2').style.display = "none";
     }
 
+    static randomizeQuestion() {
+        setInterval(() => {
+            let min = 0;
+            let max = 35;
+            let randomVar = Math.floor(Math.random() * (max - min + 1)) + min;
+            if (randomVar == 0) {
+                document.getElementById('activeQuestion').innerHTML = 'If you could invite anyone in the world to dinner, who would it be?'
+            } else if (randomVar == 1) {
+                document.getElementById('activeQuestion').innerHTML = 'Would you like to be famous? In what way?'
+            } else if (randomVar == 2) {
+                document.getElementById('activeQuestion').innerHTML = 'Before making a telephone call, do you ever rehearse what you are going to say?'
+            } else if (randomVar == 3) {
+                document.getElementById('activeQuestion').innerHTML = 'What would you call a perfect day?'
+            } else if (randomVar == 4) {
+                document.getElementById('activeQuestion').innerHTML = 'When was the last time you sang to yourself, or someone else?'
+            } else if (randomVar == 5) {
+                document.getElementById('activeQuestion').innerHTML = 'What do you most want to protect?'
+            } else if (randomVar == 6) {
+                document.getElementById('activeQuestion').innerHTML = 'How are you going to die?'
+            } else if (randomVar == 7) {
+                document.getElementById('activeQuestion').innerHTML = 'What do you want your soulmate to be able to do?'
+            } else if (randomVar == 8) {
+                document.getElementById('activeQuestion').innerHTML = 'What are you most grateful for?'
+            } else if (randomVar == 9) {
+                document.getElementById('activeQuestion').innerHTML = 'Do you have any advice for those younger than you?'
+            } else if (randomVar == 10) {
+                document.getElementById('activeQuestion').innerHTML = 'What\'s your life, in four words?'
+            } else if (randomVar == 11) {
+                document.getElementById('activeQuestion').innerHTML = 'What do you want to master, if it took only a day?'
+            } else if (randomVar == 12) {
+                document.getElementById('activeQuestion').innerHTML = 'What truth do you search for?'
+            } else if (randomVar == 13) {
+                document.getElementById('activeQuestion').innerHTML = 'What is your greatest and most impossible dream?'
+            } else if (randomVar == 14) {
+                document.getElementById('activeQuestion').innerHTML = 'What is your greatest accomplishment?'
+            } else if (randomVar == 15) {
+                document.getElementById('activeQuestion').innerHTML = 'What do you value most in a friend?'
+            } else if (randomVar == 16) {
+                document.getElementById('activeQuestion').innerHTML = 'What is your most treasured memory?'
+            } else if (randomVar == 17) {
+                document.getElementById('activeQuestion').innerHTML = 'What do you not want to remember?'
+            } else if (randomVar == 18) {
+                document.getElementById('activeQuestion').innerHTML = 'If you only had a year left to live, what would you do?'
+            } else if (randomVar == 19) {
+                document.getElementById('activeQuestion').innerHTML = 'What is a friendship, to you?'
+            } else if (randomVar == 20) {
+                document.getElementById('activeQuestion').innerHTML = 'Who loves you most?'
+            } else if (randomVar == 21) {
+                document.getElementById('activeQuestion').innerHTML = 'What is the best characteristic of your best friend?'
+            } else if (randomVar == 22) {
+                document.getElementById('activeQuestion').innerHTML = 'What do you think of your family?'
+            } else if (randomVar == 23) {
+                document.getElementById('activeQuestion').innerHTML = 'How would you describe your mother?'
+            } else if (randomVar == 24) {
+                document.getElementById('activeQuestion').innerHTML = 'How would you describe your father?'
+            } else if (randomVar == 25) {
+                document.getElementById('activeQuestion').innerHTML = 'What do you want your friends to know?'
+            } else if (randomVar == 26) {
+                document.getElementById('activeQuestion').innerHTML = 'What is your name?'
+            } else if (randomVar == 27) {
+                document.getElementById('activeQuestion').innerHTML = 'What is your quest?'
+            } else if (randomVar == 28) {
+                document.getElementById('activeQuestion').innerHTML = 'What is the airspeed velocity of an unladen swallow?'
+            } else if (randomVar == 29) {
+                document.getElementById('activeQuestion').innerHTML = 'How important is honesty to you?'
+            } else if (randomVar == 30) {
+                document.getElementById('activeQuestion').innerHTML = 'What is an embarrassing moment you can now laugh about?'
+            } else if (randomVar == 31) {
+                document.getElementById('activeQuestion').innerHTML = 'When did you last cry?'
+            } else if (randomVar == 32) {
+                document.getElementById('activeQuestion').innerHTML = 'Is there someone on this website you\'ve grown fond of?'
+            } else if (randomVar == 33) {
+                document.getElementById('activeQuestion').innerHTML = 'What, if anything, is too serious to be joked about?'
+            } else if (randomVar == 34) {
+                document.getElementById('activeQuestion').innerHTML = 'If your house started to burn down, what would you save?'
+            } else if (randomVar == 35) {
+                document.getElementById('activeQuestion').innerHTML = 'Why are you on this website?'
+            }
+        }, 15000);
+    }
+
     static handleSignup() {
         document.getElementById('signupSubmit').addEventListener('click', () => {
             if (document.getElementById('signupPassword').value === '' || document.getElementById('signupEmail').value === '' || ! /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(document.getElementById('signupEmail').value)) {
@@ -41,7 +125,6 @@ class main {
                 alert(`Your passwords don't match. Want to fix that?`)
             } else {
                 main.performAjax('XMLHttpRequest2', JSON.stringify([document.getElementById('signupEmail').value, document.getElementById('signupPassword').value, document.getElementById('username').value]), (response) => {
-                    console.log(response);
                     if (response == '1') {
                         alert('There\'s already a user with that email address.')
                     } else {
@@ -60,6 +143,7 @@ class main {
                         document.getElementById('activeuser').style.display = 'block';
                         document.getElementById('loginButton').style.display = 'none';
                         document.getElementById('registerButton').style.display = 'none';
+                        document.getElementById('versionbox').style.display = "none";
                     }
                 });
             }
@@ -88,6 +172,7 @@ class main {
                         document.getElementById('messagebox').style.display = 'block';
                         document.getElementById('loginButton').style.display = 'none';
                         document.getElementById('registerButton').style.display = 'none';
+                        document.getElementById('versionbox').style.display = "none";
                     }
                 });
             }
@@ -98,7 +183,7 @@ class main {
     static handleAboutMe() {
         document.getElementById('userpageSubmit').addEventListener('click', () => {
             main.performAjax('XMLHttpRequest4', JSON.stringify([document.getElementById('activeemail').innerHTML, document.getElementById('hobby').value, document.getElementById('job').value, document.getElementById('goal').value, document.getElementById('identity').value]), () => {
-                alert('Data updated! Future chat partners will gradually be made aware of this information when you chat. If you\'re not okay with that, just put in new information and re-submit.');
+                alert('Data updated! Future chat partners will not be made aware of this information when you chat. It may be used to match you up with partners who are unlike you. If you want the matching process to be completely random, as it is by default, then re-submit your answers with the fields blank.');
                 document.getElementById('hobby').value = '';
                 document.getElementById('job').value = '';
                 document.getElementById('goal').value = '';
@@ -157,9 +242,13 @@ class main {
                 } else {
                     alert('You\'re chatting! Have fun, and be nice!');
                     response = JSON.parse(response);
-                    console.log(response);
                     document.getElementById('otheruserpageTitle').innerHTML = response[0];
                     document.getElementById('otheruserpageTitle').style.display = 'none';
+                    main.performAjax('XMLHttpRequest10', JSON.stringify([document.getElementById('activeemail').innerHTML, document.getElementById('otheruserpageTitle').innerHTML]), (response) => {
+                        response = JSON.stringify(response);
+                        response = response.replace(/"]/g, '').replace(/\["/g, '').replace(/\\"/g, '').replace(/","/g, '').replace(/"\[\[/g, '').replace(/\\,\[/g, '').replace(/\\,/g, '').replace(/"\[/g, '').replace(/""/g, '');
+                        document.getElementById('otherusercomments').innerHTML = response;
+                    });
                 }
             });
             main.checkMessages();
@@ -203,7 +292,7 @@ class main {
             } else {
                 let sendaway = '<div style="text-align: center">' + document.getElementById('otherusercommentText').value.replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/'/g, "&#039;").replace(/\\/g, "&#92;") + '</div><br>';
                 document.getElementById('otherusercommentText').value = '';
-               /* FIX THIS*/ main.performAjax('XMLHttpRequest6', JSON.stringify([document.getElementById('activeemail').innerHTML, document.getElementById('otheruserpageTitle').innerHTML, [sendaway], document.getElementById('activeemail').innerHTML]), (response) => {
+                main.performAjax('XMLHttpRequest6', JSON.stringify([document.getElementById('activeemail').innerHTML, document.getElementById('otheruserpageTitle').innerHTML, [sendaway], document.getElementById('activeemail').innerHTML]), (response) => {
                     response = JSON.stringify(response);
                     response = response.replace(/"]/g, '').replace(/\["/g, '').replace(/\\"/g, '').replace(/","/g, '').replace(/"\[\[/g, '').replace(/\\,\[/g, '').replace(/\\,/g, '').replace(/"\[/g, '');
                     document.getElementById('otherusercomments').innerHTML = response;
@@ -216,11 +305,13 @@ class main {
     static manualCheckMessages() {
         document.getElementById('messagebox').addEventListener('click', () => {
             main.performAjax('XMLHttpRequest7', document.getElementById('activeemail').innerHTML, (response) => {
-                if (response == 1) {
-                    console.log('responseis1');
+                if (response != 1) {
                     document.getElementById('messagebox').style.display = "none";
                     document.getElementById('messagebox2').style.display = "block";
+                    document.getElementById('otheruserpageTitle').innerHTML = response;
                 } else {
+                    document.getElementById('messagebox').style.display = "block";
+                    document.getElementById('messagebox2').style.display = "none";
                     alert('No new messages yet. Hang tight, though, something is sure to come through!');
                 }
             });
@@ -229,9 +320,13 @@ class main {
 
     static checkMessages() {
         main.performAjax('XMLHttpRequest7', document.getElementById('activeemail').innerHTML, (response) => {
-            if (response == 1) {
+            if (response != 1) {
                 document.getElementById('messagebox').style.display = "none";
                 document.getElementById('messagebox2').style.display = "block";
+                document.getElementById('otheruserpageTitle').innerHTML = response;
+            } else {
+                document.getElementById('messagebox').style.display = "block";
+                document.getElementById('messagebox2').style.display = "none";
             }
         });
     }
@@ -248,6 +343,11 @@ class main {
                 document.getElementById('otheruserpageTitle').style.display = 'none';
                 document.getElementById('otherusercomments').innerHTML = response[2];
             });
+            main.performAjax('XMLHttpRequest9', JSON.stringify([document.getElementById('activeemail').innerHTML, document.getElementById('otheruserpageTitle').innerHTML]), (response) => {
+                response = JSON.stringify(response);
+                response = response.replace(/"]/g, '').replace(/\["/g, '').replace(/\\"/g, '').replace(/","/g, '').replace(/"\[\[/g, '').replace(/\\,\[/g, '').replace(/\\,/g, '').replace(/"\[/g, '');
+                document.getElementById('otherusercomments').innerHTML = response;
+            });
             main.checkMessages();
         });
     }
@@ -262,6 +362,15 @@ class main {
             if (evt.which === 13) {
                 evt.preventDefault();
             }
+        });
+    }
+
+    static handleAboutSite() {
+        document.getElementById('versionbox').addEventListener('click', () => {
+           alert('Welcome to I.F.; Welcome to International Friends! This website is designed to be a stress-free location for people all around the world, and from many different cultures, to exchange their thoughts.');
+           alert('All communication on this website is 100% anonymous. Other people won\'t know your name, email address, age, location, or ANYTHING else. You are entirely in control of your public Persona here.');
+           alert('There are currently two primary ways to communicate--on the basic homepage, here, where various discussion topics are offered up at random, or you can try a private chat, where you will be matched up with another random user of this website.');
+           alert('If a person is not logged in, they may not respond to your messages right away. That\'s alright! Try chatting with someone new, or join the public chat. This website is going to be big soon, and I\'m so happy you\'re going to be part of it.');
         });
     }
 

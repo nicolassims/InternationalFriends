@@ -82,7 +82,7 @@ class DataHandler {
 
     static chatWithPartner(data) {
         data = JSON.parse(data);
-        console.log(data);
+        data[1] = data[1].replace(/"/g, '');
         if (worldWideComments.length == 0) {
             worldWideComments[0] = data;
             return worldWideComments[0][2];
@@ -96,15 +96,36 @@ class DataHandler {
             }
             worldWideComments[worldWideComments.length] = data;
         }
-        return worldWideComments[worldWideComments.length][2];
+        return worldWideComments[worldWideComments.length - 1][2];
     }
 
     static checkMessages(data) {
         for (let i = 0; i < worldWideComments.length; i++) {
             if (data == worldWideComments[i][0] || data == worldWideComments[i][1]) {
                 if (worldWideComments[i][3] != data) {
-                    return 1;
+                    return worldWideComments[i][3]
                 }
+            }
+        }
+        return 1;
+    }
+
+    static refreshOtherUserComments(data) {
+        data = JSON.parse(data);
+        data[1] = data[1].replace(/\\"/, '').replace(/"/g, '');
+        for (let i = 0; i < worldWideComments.length; i++) {
+            if (data[0] == worldWideComments[i][0] && data[1] == worldWideComments[i][1] && worldWideComments[i][3] != data[0] || data[0] == worldWideComments[i][1] && data[1] == worldWideComments[i][0] && worldWideComments[i][3] != data[0]) {
+                return worldWideComments[i][2];
+            }
+        }
+    }
+
+    static refreshOtherUserComments2(data) {
+        data = JSON.parse(data);
+        data[1] = data[1].replace(/\\"/, '').replace(/"/g, '');
+        for (let i = 0; i < worldWideComments.length; i++) {
+            if (data[0] == worldWideComments[i][0] && data[1] == worldWideComments[i][1] || data[0] == worldWideComments[i][1] && data[1] == worldWideComments[i][0]) {
+                return worldWideComments[i][2];
             }
         }
     }
